@@ -1,0 +1,42 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Variables ***
+${url}            https://opensource-demo.orangehrmlive.com
+${userName}       Admin
+${password}       admin123
+
+*** Test Cases ***
+TC1 with Chrome
+    [Setup]    Open Browser    ${url}    chrome
+    Log To Console    Chrome Test Started
+    Comment    Open Browser    https://opensource-demo.orangehrmlive.com/    chrome
+    Input Text    id=txtUsername    ${userName}
+    Input Password    id=txtPassword    ${password}
+    Click Button    id=btnLogin
+    Comment    Sleep    5
+    Comment    Close Browser
+    [Teardown]    Close Browser
+
+TC2 with Firefox
+    [Setup]    Open Browser    ${url}    ff
+    Log To Console    Chrome Test Finish and FF test Started
+    Comment    Open Browser    https://opensource-demo.orangehrmlive.com/    ff
+    Input Text    id=txtUsername    ${userName}
+    Input Password    id=txtPassword    ${password}
+    Click Button    id=btnLogin
+    Comment    Sleep    5
+    Comment    Close Browser
+    [Teardown]    Close Browser
+
+TC3 with IE
+    [Setup]    Open Browser    ${url}    ie
+    Log To Console    FF Test Finish and IE test Started
+    Comment    Open Browser    https://opensource-demo.orangehrmlive.com/    ie
+    Set Window Size    800    600
+    Input Text    id=txtUsername    ${userName}
+    Input Password    id=txtPassword    ${password}
+    Click Button    id=btnLogin
+    Comment    Sleep    5
+    Comment    Close Browser
+    Log To Console    FF Test Finish
